@@ -1,0 +1,5 @@
+meta:
+  version: 1.0.0
+files:
+  - src: *.lua
+  - src: build/cffi.dll
