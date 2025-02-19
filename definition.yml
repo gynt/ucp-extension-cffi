@@ -1,0 +1,6 @@
+name: cffi
+version: 1.0.0
+author: gynt
+type: module
+meta:
+  version: 1.0.0
