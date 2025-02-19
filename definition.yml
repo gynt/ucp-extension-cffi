@@ -2,5 +2,7 @@ name: cffi
 version: 1.0.0
 author: gynt
 type: module
+dependencies:
+  framework: ">= 3.0.7"
 meta:
   version: 1.0.0
