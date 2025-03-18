@@ -1,8 +1,9 @@
 param (
-  [Parameter(Mandatory=$true)][string]$BuildType,
-  [Parameter(Mandatory=$true)][string]$UCP3Path
+    [Parameter(Mandatory=$false)][string]$BuildType = "Release",
+    [Parameter(Mandatory=$false)][string]$UCP3Path = "." # We don't use it
 )
 
+Push-Location cffi-lua
 
 rm -R build -ErrorAction SilentlyContinue
 
@@ -20,7 +21,10 @@ cp .\lua\build\native\bin\Win32\v143\Release\lua.dll deps\lua.dll
 cp .\lua\build\native\lib\Win32\v143\Release\lua.lib deps\lua.lib
 cp -r .\lua\build\native\include\* deps\include
 
-meson setup .. -Dlua_version=vendor -Dtests=false
-ninja all
+meson setup .. -Dlua_version=vendor -Dtests=false --buildtype=release --vsenv
+meson compile -C .
+#ninja all
+
+Pop-Location
 
 Pop-Location
