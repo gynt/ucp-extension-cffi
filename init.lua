@@ -10,4 +10,8 @@ return {
   
   disable = function(self, config) end,
 
+}, {
+  proxy = {
+    ignored = "cffi",
+  },
 }
