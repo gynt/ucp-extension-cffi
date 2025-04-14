@@ -1,3 +1,4 @@
+---@class cffi
 local cffi = {}
 
 local dll
