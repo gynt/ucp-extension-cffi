@@ -3,6 +3,8 @@ param (
     [Parameter(Mandatory=$false)][string]$UCP3Path = "." # We don't use it
 )
 
+$BuildTypeLC = $BuildType.ToLower()
+
 Push-Location cffi-lua
 
 rm -R build -ErrorAction SilentlyContinue
@@ -17,12 +19,12 @@ Expand-Archive lua-5.4.6.zip -DestinationPath lua
 mkdir deps
 mkdir deps\include
 
-cp .\lua\build\native\bin\Win32\v143\Release\lua.dll deps\lua.dll
-cp .\lua\build\native\lib\Win32\v143\Release\lua.lib deps\lua.lib
+cp ".\lua\build\native\bin\Win32\v143\$BuildType\lua.dll" deps\lua.dll
+cp ".\lua\build\native\lib\Win32\v143\$BuildType\lua.lib" deps\lua.lib
 cp -r .\lua\build\native\include\* deps\include
 
-meson setup .. -Dlua_version=vendor -Dtests=false --buildtype=release --vsenv
-meson compile -C .
+meson setup .. -Dlua_version=vendor -Dtests=false --buildtype=$BuildTypeLC --vsenv
+meson compile -C . --vs-args /Zc:threadSafeInit-
 #ninja all
 
 Pop-Location

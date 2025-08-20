@@ -1,5 +1,7 @@
 build/
 
+*.pdb
+
 # Compiled Lua sources
 luac.out
 
