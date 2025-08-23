@@ -3,3 +3,5 @@ meta:
 files:
   - src: "*.lua"
   - src: "cffi-lua/build/cffi.dll"
+  - src: "locale"
+  - src: "definition.yml"
