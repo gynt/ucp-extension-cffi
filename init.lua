@@ -42,11 +42,16 @@ end
 
 ---Create a cdata object
 ---@param ct string The c-syntax type specifier
----@param nelem number number of elements
----@return nil nothing
+---@param nelem number|nil number of elements
+---@return number size
 function CFFIInterface.sizeof(ct, nelem)
   if dll == nil then error('cffi.dll not initialized') end
   return dll.sizeof(ct, nelem)
+end
+
+function CFFIInterface.copy(dst, src, len)
+  if dll == nil then error('cffi.dll not initialized') end
+  return dll.copy(dst, src, len)
 end
 
 ---Get a handle to the cffi lua library
