@@ -1,0 +1,4 @@
+[submodule "cffi-lua"]
+	path = cffi-lua
+	url = https://github.com/gynt/cffi-lua
+	branch = ucp-extension
