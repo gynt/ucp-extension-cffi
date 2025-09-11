@@ -5,3 +5,4 @@ files:
   - src: "cffi-lua/build/cffi.dll"
   - src: "locale"
   - src: "definition.yml"
+  - src: "options.yml"
