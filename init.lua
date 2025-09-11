@@ -17,7 +17,7 @@ end
 ---Cast c types
 ---@param ct string The c-syntax type specifier
 ---@param init unknown
----@return nil nothing
+---@return unknown any
 function CFFIInterface.cast(ct, init)
   if dll == nil then error('cffi.dll not initialized') end
   return dll.cast(ct, init)
@@ -25,7 +25,7 @@ end
 
 ---Get the address of cdata
 ---@param cdata unknown the object
----@return nil nothing
+---@return unknown any
 function CFFIInterface.addressof(cdata)
   if dll == nil then error('cffi.dll not initialized') end
   return dll.addressof(cdata)
@@ -34,7 +34,7 @@ end
 ---Create a cdata object
 ---@param ct string The c-syntax type specifier
 ---@param ... unknown number of elements or ...
----@return nil nothing
+---@return unknown any
 function CFFIInterface.new(ct, ...)
   if dll == nil then error('cffi.dll not initialized') end
   return dll.new(ct, ...)
@@ -52,6 +52,13 @@ end
 function CFFIInterface.copy(dst, src, len)
   if dll == nil then error('cffi.dll not initialized') end
   return dll.copy(dst, src, len)
+end
+
+---@param any any
+---@return integer number
+function CFFIInterface.tonumber(any)
+  if dll == nil then error('cffi.dll not initialized') end
+  return dll.tonumber(any)
 end
 
 ---Get a handle to the cffi lua library
