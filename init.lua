@@ -54,6 +54,11 @@ function CFFIInterface.copy(dst, src, len)
   return dll.copy(dst, src, len)
 end
 
+function CFFIInterface.fill(dst, len, value)
+  if dll == nil then error('cffi.dll not initialized') end
+  return dll.fill(dst, len, value)
+end
+
 ---@param any any
 ---@return integer number
 function CFFIInterface.tonumber(any)

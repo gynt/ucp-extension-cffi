@@ -29,7 +29,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 meson setup .. -Dlua_version=vendor -Dtests=false --buildtype=$BuildTypeLC --vsenv
-meson compile -C . --vs-args /Zc:threadSafeInit-
+meson compile -C . --vs-args /Zc:threadSafeInit- --vs-args /EHa
 #ninja all
 
 Pop-Location
