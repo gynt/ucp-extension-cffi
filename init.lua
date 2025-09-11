@@ -2,6 +2,7 @@
 local cffi = {}
 
 local dll = require("cffi.dll")
+local settings = dll.settings
 
 ---@class CFFIInterface
 local CFFIInterface = {}
@@ -11,7 +12,7 @@ local CFFIInterface = {}
 ---@return nil nothing
 function CFFIInterface.cdef(contents)
   if dll == nil then error('cffi.dll not initialized') end
-  return dll.cdef(contents)
+  dll.cdef(contents)
 end
 
 ---Cast c types
@@ -72,9 +73,18 @@ function cffi:cffi() return dll end
 
 
 function cffi.enable(self, config)
-  if dll == nil then error() end
+  if dll == nil then error() end  
+    -- bool gc_log_cdata = false;
+    -- bool gc_log_lib = false;
+    -- bool gc_cdata_tryExcept = false;
+  settings("gc_log_cdata", config.debugging.logGC.enabled)
+  settings("gc_log_lib", config.debugging.logGC.enabled)
+  settings("gc_cdata_tryExcept", config.debugging.tryExceptGC.enabled)
 end
-  
+
+function cffi.settings(self)
+  return settings
+end
   
 function cffi.disable(self, config) end
 

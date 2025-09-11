@@ -1,0 +1,25 @@
+meta:
+  version: 1.0.0
+options:
+  - url: cffi.debugging.logGC.enabled
+    header: "Log Garbage Collector actions from cffi"
+    text: "Turning it on means garbage collector events affecting cffi objects are placed in the verbose log, which may produce lag spikes"
+    hasHeader: true
+    display: UCP2Switch
+    category:
+      - Stability
+      - Debugging
+    contents:
+      type: boolean
+      value: false
+  - url: cffi.debugging.tryExceptGC.enabled
+    header: "Add exception handlers to Garbage Collector actions from cffi"
+    text: "Turning it on means garbage collector events that throw errors are caught and logged instead of crashing the application"
+    hasHeader: true
+    display: UCP2Switch
+    category:
+      - Stability
+      - Debugging
+    contents:
+      type: boolean
+      value: true
